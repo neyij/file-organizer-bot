@@ -1,0 +1,36 @@
+name: Build Mac App
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build-macos:
+    runs-on: macos-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pyinstaller
+
+      - name: Build macOS App Bundle
+        run: |
+          pyinstaller --noconsole --windowed --name="FileOrganizerBot" organize_files.py
+          cd dist
+          zip -r FileOrganizerBot-macOS.zip FileOrganizerBot.app
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: FileOrganizerBot-macOS
+          path: dist/FileOrganizerBot-macOS.zip
