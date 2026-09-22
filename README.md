@@ -51,7 +51,26 @@ Ideal for Linux distributions, developers, or anyone wanting to inspect the code
    git clone https://github.com/<YOUR_USERNAME>/<YOUR_REPOSITORY>.git
    cd <YOUR_REPOSITORY>
    ```
-2. Run the application:
+2. Run the application directly:
    ```bash
    python organize_files.py
    ```
+   *(Use `python3 organize_files.py` on Linux/macOS).*
+
+---
+
+## 🛠️ How It Works
+
+1. Launch the application.
+2. Adjust your settings:
+   - Check or uncheck category boxes.
+   - (Optional) Specify exact extensions to filter in the text field.
+3. Click **Start Organizing** and choose the directory you wish to organize.
+4. If you need to reverse the changes, open the app again and click **Undo Last Sort**.
+
+---
+
+## 📄 License
+
+This project is distributed for personal and commercial productivity use. Feel free to fork and customize for your workflow.
+
