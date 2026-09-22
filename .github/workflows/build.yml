@@ -1,4 +1,4 @@
-name: Build Mac App
+name: Build Cross-Platform Apps
 
 on:
   workflow_dispatch:
@@ -6,8 +6,11 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build-macos:
-    runs-on: macos-latest
+  build:
+    strategy:
+      matrix:
+        os: [windows-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
 
     steps:
       - name: Check out repository
@@ -23,13 +26,29 @@ jobs:
           python -m pip install --upgrade pip
           pip install pyinstaller
 
+      # Windows build step
+      - name: Build Windows Executable
+        if: runner.os == 'Windows'
+        run: |
+          pyinstaller --onefile --noconsole --name="FileOrganizerBot" organize_files.py
+
+      - name: Upload Windows Artifact
+        if: runner.os == 'Windows'
+        uses: actions/upload-artifact@v4
+        with:
+          name: FileOrganizerBot-Windows
+          path: dist/FileOrganizerBot.exe
+
+      # macOS build step
       - name: Build macOS App Bundle
+        if: runner.os == 'macOS'
         run: |
           pyinstaller --noconsole --windowed --name="FileOrganizerBot" organize_files.py
           cd dist
           zip -r FileOrganizerBot-macOS.zip FileOrganizerBot.app
 
-      - name: Upload Artifact
+      - name: Upload macOS Artifact
+        if: runner.os == 'macOS'
         uses: actions/upload-artifact@v4
         with:
           name: FileOrganizerBot-macOS
