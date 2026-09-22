@@ -1,0 +1,16 @@
+2026-09-16 23:36:57,350 [INFO] Running initial scan on C:\Users\HP\Desktop\file arrangement bot\test_sandbox...
+2026-09-16 23:36:58,377 [INFO] Moved document -> Documents/: document_sample.txt -> document_sample.txt
+2026-09-16 23:36:59,397 [INFO] Moved video -> Silo/: silo0201.mp4 -> silo0201.mp4
+2026-09-16 23:37:00,408 [INFO] Moved other -> Others/: unknown_item.xyz -> unknown_item.xyz
+2026-09-16 23:37:00,409 [INFO] Initial scan completed.
+2026-09-16 23:57:58,415 [INFO] Starting File Organizer Observer on: C:\Users\HP\Desktop\Test_Downloads
+2026-09-16 23:57:58,415 [INFO] Running initial scan on C:\Users\HP\Desktop\Test_Downloads...
+2026-09-16 23:57:59,420 [INFO] Moved document -> Documents/: sample.pdf -> sample.pdf
+2026-09-16 23:58:00,425 [INFO] Moved video -> Silo/: silo0101.mp4 -> silo0101.mp4
+2026-09-16 23:58:01,434 [INFO] Moved image -> Images/: test.jpg -> test.jpg
+2026-09-16 23:58:01,434 [INFO] Initial scan completed.
+2026-09-16 23:58:01,437 [INFO] Watchdog observer active and listening for new files.
+2026-09-17 00:05:23,911 [INFO] Moved video -> Silo/: silo0101.mp4 -> silo0101.mp4
+2026-09-17 00:06:05,985 [INFO] Moved image -> Images/: test.jpg -> test.jpg
+2026-09-17 00:14:01,351 [INFO] Stopping observer on user request...
+2026-09-17 00:14:01,354 [INFO] Observer terminated.
