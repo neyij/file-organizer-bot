@@ -22,13 +22,18 @@ class Rule:
     pattern: str
     target_folder: str
     
-    _compiled: re.Pattern = field(init=False, repr=False)
+    _compiled: Optional[re.Pattern] = field(default=None, init=False, repr=False)
     
     def __post_init__(self):
-        self._compiled = re.compile(self.pattern, re.IGNORECASE)
+        try:
+            self._compiled = re.compile(self.pattern, re.IGNORECASE)
+        except re.error:
+            self._compiled = None
         
     def matches(self, filename: str) -> bool:
-        return bool(self._compiled.search(filename))
+        if self._compiled:
+            return bool(self._compiled.search(filename))
+        return self.pattern.lower() in filename.lower()
 
 
 @dataclass

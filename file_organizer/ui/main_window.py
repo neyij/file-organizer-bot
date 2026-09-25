@@ -347,7 +347,7 @@ class MainWindow:
         )
 
     def _on_edit_rules(self) -> None:
-        """Create a default rules.json if missing, then open it."""
+        """Open the visual Rules Editor dialog."""
         rules_path = "rules.json"
         if not os.path.exists(rules_path):
             default_rules = [
@@ -371,13 +371,10 @@ class MainWindow:
                 return
                 
         try:
-            if os.name == 'nt':
-                os.startfile(rules_path)
-            else:
-                import subprocess
-                subprocess.call(["open" if sys.platform == "darwin" else "xdg-open", rules_path])
+            from file_organizer.ui.rules_editor import RulesEditorWindow
+            RulesEditorWindow(self.root, rules_path=rules_path)
         except Exception as e:
-            messagebox.showerror("Error", f"Could not open rules file: {e}", parent=self.root)
+            messagebox.showerror("Error", f"Could not open rules editor: {e}", parent=self.root)
 
     def _execute_current_plan(self) -> None:
         """Execute the confirmed plan and show results."""
