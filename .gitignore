@@ -15,3 +15,15 @@ __pycache__/
 
 # Local logs
 *.log
+
+# Ignore proprietary Pro/Commercial version components
+file_organizer/
+.pytest_cache/
+phase1_audit_report.md
+rules.json
+File Organizer Bot.spec
+organizer.log
+build/
+dist/
+.venv/
+__pycache__/
